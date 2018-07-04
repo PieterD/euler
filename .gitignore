@@ -1,0 +1,6 @@
+.stack-work/
+euler.cabal
+*~
+out/
+.idea/
+*.iml
