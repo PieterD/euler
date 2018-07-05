@@ -37,3 +37,16 @@ assignment5 = product $ map (\(p, n) -> product $ replicate n p) factorList
     base = [1 .. 20]
     highestNumberOfFactors n = maximum $ map (\b -> length $ filter (\f -> f == n) (factors b)) base
     factorList = map (\x -> (x, highestNumberOfFactors x)) . unique . factors . product $ base
+
+---------------------------
+-- Sum square difference --
+---------------------------
+assignment6 = squareOfSums - sumOfSquares
+  where
+    sumOfSquares = sum . map (\x -> x*x) $ [1..100]
+    squareOfSums = (^ 2) . sum $ [1..100]
+
+-------------------
+-- 10001st prime --
+-------------------
+assignment7 = primes !! 10000
