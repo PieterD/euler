@@ -16,7 +16,7 @@ assignment2 = sum [x | x <- takeWhile (\y -> y <= 4000000) fibonacci, even x]
 --------------------------
 -- Largest prime factor --
 --------------------------
-assignment3 = maximum . factors $ 600851475143
+assignment3 = maximum . primeFactors $ 600851475143
 
 --------------------------------
 -- Largest palindrome product --
@@ -35,8 +35,8 @@ assignment4 = maximum $ filter (\x -> x == reverseNum x) [x * y | x <- [1 .. 999
 assignment5 = product $ map (\(p, n) -> product $ replicate n p) factorList
   where
     base = [1 .. 20]
-    highestNumberOfFactors n = maximum $ map (\b -> length $ filter (\f -> f == n) (factors b)) base
-    factorList = map (\x -> (x, highestNumberOfFactors x)) . unique . factors . product $ base
+    highestNumberOfFactors n = maximum $ map (\b -> length $ filter (\f -> f == n) (primeFactors b)) base
+    factorList = map (\x -> (x, highestNumberOfFactors x)) . unique . primeFactors . product $ base
 
 ---------------------------
 -- Sum square difference --
@@ -50,3 +50,27 @@ assignment6 = squareOfSums - sumOfSquares
 -- 10001st prime --
 -------------------
 assignment7 = primes !! 10000
+
+---------------------------------
+-- Largest product in a series --
+---------------------------------
+
+---------------------------------
+-- Special pythagorean triplet --
+---------------------------------
+-- a+b+c = 1000, a^2+b^2 = c^2, return abc
+assignment9 = take 1 [a*b*c | a<-[1..1000], b<-[1..1000], c<-[1..1000], a^2+b^2==c^2, a+b+c==1000]
+
+-------------------------
+-- Summation of primes --
+-------------------------
+assignment10 = sum . takeWhile (<2000000) $ primes
+
+-- --
+
+--------------------------------------
+-- Highly divisible triangle number --
+--------------------------------------
+assignment12 = take 1 . filter ((>= 500) . numDivisors) $ triangleNumbers
+
+triangleNumbers = [sum [1..x] | x <- [1..]]
