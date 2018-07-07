@@ -1,4 +1,9 @@
-module Useful where
+module Useful
+  ( fibonacci
+  , unique
+  ) where
+
+import           Prime
 
 fibonacci = fibonacci' 1 2
   where

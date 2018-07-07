@@ -1,6 +1,22 @@
-module Prime where
+module Prime
+  ( allFactors
+  , numDivisors
+  , primes
+  , primeFactors
+  ) where
 
-import Data.List(group)
+import           Data.List (group)
+
+allFactors :: Integer -> [Integer]
+allFactors n = removeFactors [1 ..]
+  where
+    removeFactors (f:fs)
+      | n == f * 2 = [f, n]
+      | n `mod` f == 0 = f : removeFactors fs
+      | otherwise = removeFactors fs
+
+numDivisors :: Integer -> Int
+numDivisors = product . map ((+ 1) . length) . group . primeFactors
 
 divisibleBy :: Integer -> Integer -> Bool
 divisibleBy x y = x `mod` y == 0
@@ -20,14 +36,3 @@ primeFactors n = removeFactors n primes
     removeFactors n (p:ps)
       | n `mod` p == 0 = p : removeFactors (n `div` p) (p : ps)
       | otherwise = removeFactors n ps
-
-allFactors :: Integer -> [Integer]
-allFactors n = removeFactors [1 ..]
-  where
-    removeFactors (f:fs)
-      | n == f * 2 = [f, n]
-      | n `mod` f == 0 = f : removeFactors fs
-      | otherwise = removeFactors fs
-
-numDivisors :: Integer -> Int
-numDivisors = product . map ((+1).length) . group . primeFactors
