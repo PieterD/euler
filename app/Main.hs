@@ -3,4 +3,4 @@ module Main where
 import           Assignments
 
 main :: IO ()
-main = print $ assignment12
+main = print $ assignment10
