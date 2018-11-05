@@ -1,4 +1,4 @@
-module Assignments where
+module Euler where
 
 import           Prime
 import           Useful

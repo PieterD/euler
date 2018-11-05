@@ -1,6 +1,6 @@
 module Main where
 
-import           Assignments
+import qualified Euler
 
 main :: IO ()
-main = print $ assignment10
+main = print $ Euler.assignment10
